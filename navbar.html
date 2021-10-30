@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar</title>
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="navbar-logo">
-            <div class="navbar-logo-letterLL">ll</div>
-            <div class="navbar-logo-letterD">d</div>
+    <nav class="navbar grid-x large-12">
+        <div class="navbar-logo large-6">
+            <span class="navbar-logo-letterLL">ll</span>
+            <span class="navbar-logo-letterD">d</span>
         </div>
-        <ul class="navbar-ul">
-            <li class="navbar-ul-li"><a href="#home">Home</a></li>
-            <li class="navbar-ul-li"><a href="#news">News</a></li>
-            <li class="navbar-ul-li"><a href="#contact">Contact</a></li>
-            <li class="navbar-ul-li"><a href="#about">About</a></li>
-        </ul>
+        <div class="navbar-menu large-6">
+            <!-- <input type="checkbox" id="checkbox_toggle" />
+            <label for="checkbox_toggle" class="hamburger" id="hamburger">&#9776;</label> -->
+            <ul class="navbar-menu-ul">
+                <li class="navbar-menu-ul-li">
+                    <a href="#home">Home</a>
+                </li>
+                <li class="navbar-menu-ul-li">
+                    <a href="#news">News</a>
+                </li>
+                <li class="navbar-menu-ul-li">
+                    <a href="#contact">Contact</a>
+                </li>
+                <li class="navbar-menu-ul-li">
+                    <a href="#about">About</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
     </nav>
 </body>
+
 </html>
 
 <!-- Compressed CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.3/dist/css/foundation.min.css" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.3/dist/css/foundation.min.css"
+    crossorigin="anonymous">
 <style>
+    html {
+        height: 900px;
+        background-color: cornflowerblue;
+    }
+
     .navbar {
-        min-height: 80px;
-        background-color: grey;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        background-color: teal;
     }
 
     .navbar-logo {
-        position: absolute;
         font-size: 50px;
         line-height: unset;
     }
@@ -40,33 +68,101 @@
         display: inline-block;
         text-transform: uppercase;
         color: blue;
+        line-height: unset;
     }
 
     .navbar-logo-letterD {
         display: inline-block;
         text-transform: uppercase;
-        color: grey;
+        color: black;
+        line-height: unset;
     }
 
-    .navbar-ul {
+    .navbar-menu {
+        /* text-align: end; */
+        /* display: flex;
+        justify-content: space-between;
+        align-items: center; */
+    }
+
+    .navbar-menu-ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         list-style-type: none;
-        margin: 0;
-        padding: 0;
+        margin: auto;
         overflow: hidden;
     }
 
-    .navbar-ul-li {
-        display:inline;
-        float: right;
+    .navbar-menu-ul-li {
+        display: inline;
     }
 
-    .navbar-ul-li a{
-        display: block;
+    .navbar-menu-ul-li a {
+        color: white;
         padding: 14px 16px;
-        text-align: center;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        -webkit-transition: all 0.3s ease-in-out;
+        transition: all 0.3s ease-in-out;
+        background-color: #101010;
+    }
+
+    @media only screen and (max-width: 768px) {
+
+        .navbar-menu-ul {
+            position: fixed;
+            height: 100%;
+            left: -100%;
+            top: 5rem;
+            flex-direction: column;
+            background-color: rgb(236, 27, 27);
+            justify-content: center;
+            width: 100%;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-menu-ul.active {
+            left: 0;
+        }
+
+        .navbar-menu-ul-li {
+            margin: 2.5rem 0;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+        }
+
     }
 
 </style>
 
 <!-- Compressed JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.3/dist/js/foundation.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.3/dist/js/foundation.min.js"
+    crossorigin="anonymous"></script>
+
+<script>
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".navbar-menu-ul");
+
+    hamburger.addEventListener("click", mobileMenu);
+
+    function mobileMenu() {
+        hamburger.classList.toggle("active");
+        navMenu.classList.toggle("active");
+    }
+</script>
