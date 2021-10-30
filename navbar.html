@@ -8,6 +8,10 @@
 </head>
 <body>
     <nav class="navbar">
+        <div class="navbar-logo">
+            <div class="navbar-logo-letterLL">ll</div>
+            <div class="navbar-logo-letterD">d</div>
+        </div>
         <ul class="navbar-ul">
             <li class="navbar-ul-li"><a href="#home">Home</a></li>
             <li class="navbar-ul-li"><a href="#news">News</a></li>
@@ -21,12 +25,34 @@
 <!-- Compressed CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.3/dist/css/foundation.min.css" crossorigin="anonymous">
 <style>
+    .navbar {
+        min-height: 80px;
+        background-color: grey;
+    }
+
+    .navbar-logo {
+        position: absolute;
+        font-size: 50px;
+        line-height: unset;
+    }
+
+    .navbar-logo-letterLL {
+        display: inline-block;
+        text-transform: uppercase;
+        color: blue;
+    }
+
+    .navbar-logo-letterD {
+        display: inline-block;
+        text-transform: uppercase;
+        color: grey;
+    }
+
     .navbar-ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
         overflow: hidden;
-        background-color: grey;
     }
 
     .navbar-ul-li {
@@ -37,7 +63,6 @@
     .navbar-ul-li a{
         display: block;
         padding: 14px 16px;
-        background-color: #dddddd;
         text-align: center;
     }
 
