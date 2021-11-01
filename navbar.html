@@ -15,8 +15,6 @@
             <span class="navbar-logo-letterD">d</span>
         </div>
         <div class="navbar-menu large-6">
-            <!-- <input type="checkbox" id="checkbox_toggle" />
-            <label for="checkbox_toggle" class="hamburger" id="hamburger">&#9776;</label> -->
             <ul class="navbar-menu-ul">
                 <li class="navbar-menu-ul-li">
                     <a href="#home">Home</a>
@@ -30,6 +28,7 @@
                 <li class="navbar-menu-ul-li">
                     <a href="#about">About</a>
                 </li>
+                <li class="navbar-menu-ul-li-close">Close</li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -71,6 +70,10 @@
         line-height: unset;
     }
 
+    .navbar-menu-cross {
+        display: none;
+    }
+
     .navbar-logo-letterD {
         display: inline-block;
         text-transform: uppercase;
@@ -78,16 +81,9 @@
         line-height: unset;
     }
 
-    .navbar-menu {
-        /* text-align: end; */
-        /* display: flex;
-        justify-content: space-between;
-        align-items: center; */
-    }
-
     .navbar-menu-ul {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
         list-style-type: none;
         margin: auto;
@@ -98,9 +94,27 @@
         display: inline;
     }
 
+    .navbar-menu-ul-li:hover {
+        background-color: blanchedalmond;
+        border-radius: 50px;
+        color: red;
+    }
+
     .navbar-menu-ul-li a {
         color: white;
         padding: 14px 16px;
+    }
+
+    .navbar-menu-ul-li-close {
+        display: none;
+        color: white;
+        padding: 14px 16px;
+    }
+
+    .navbar-menu-ul-li-close:hover {
+        background-color: grey;
+        border-radius: 50px;
+        color: red;
     }
 
     .hamburger {
@@ -119,11 +133,17 @@
 
     @media only screen and (max-width: 768px) {
 
+        .navbar-menu-cross {
+            position: fixed;
+
+        }
+
         .navbar-menu-ul {
             position: fixed;
             height: 100%;
-            left: -100%;
-            top: 5rem;
+            left: -200%;
+            bottom: 0;
+            right: 0;
             flex-direction: column;
             background-color: rgb(236, 27, 27);
             justify-content: center;
@@ -132,6 +152,7 @@
             text-align: center;
             transition: 0.3s;
             box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            opacity: 0.90;
         }
 
         .navbar-menu-ul.active {
@@ -139,7 +160,12 @@
         }
 
         .navbar-menu-ul-li {
-            margin: 2.5rem 0;
+            padding: 20px;
+        }
+
+        .navbar-menu-ul-li-close {
+            display: inline-block;
+            padding: 20px;
         }
 
         .hamburger {
@@ -158,8 +184,10 @@
 <script>
     const hamburger = document.querySelector(".hamburger");
     const navMenu = document.querySelector(".navbar-menu-ul");
+    const closeNav = document.querySelector(".navbar-menu-ul-li-close");
 
     hamburger.addEventListener("click", mobileMenu);
+    closeNav.addEventListener("click", mobileMenu);
 
     function mobileMenu() {
         hamburger.classList.toggle("active");
